@@ -1,8 +1,10 @@
-var searchTag = $("#search");
+var searchTag = $("#searchTxt"); 
 //variable storing the URL to fetch all recipe categories
 var allCategoriesUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
 //variable storing the URL to to fetch all recipes in a selected category
-var recipesInCategory = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
+var recipesInCategoryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
+//variable storing the URL to fetch a recipe by providing its name
+var recipeByNameUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 //variable storing the list of all meal names
 var content = [];
 
@@ -11,11 +13,12 @@ $.ajax({
     url: allCategoriesUrl,
     method: "GET"
 }).then(function(response){
-    for(var i=0; i<response.categories.length; i++) {
+    var allCategories = getAllCategories(response);
+    for(var i=0; i<allCategories.length; i++) {
         //parsing each category name from the response object and initiating ajax call to fetch all recipes in that category
-        var categoryName = response.categories[i].strCategory;
+        var categoryName = allCategories[i].name;
         $.ajax({
-            url: recipesInCategory + categoryName,  //passing the category name in the URL
+            url: recipesInCategoryUrl + categoryName,  //passing the category name in the URL
             method: "GET"
         }).then(function(response) {
             for(var j=0; j<response.meals.length; j++) {
@@ -31,16 +34,34 @@ $.ajax({
             .search({
                 source: content
             });
-            //Recognizing when enter key is pressed on the search text box
-            $("#searchTxt").keydown(function (e){
-                if(e.keyCode === 13){
-                    console.log("clicked");  
-                }
-            });
         });
     }
-
 });
+function getAllCategories(response) {
+    var categoryList = [];
+    for(var i=0; i<response.categories.length; i++) {
+        var category = { 
+            name: response.categories[i].strCategory,
+            thumbnail: response.categories[i].strCategoryThumb
+         };
+         categoryList.push(category);
+    }
+    return categoryList;
+}
+//When user selects recipe name from the search recommendation, add
+$(document).on("click", ".title", getRecipeByName);
+
+function getRecipeByName() {
+    $.ajax({
+        url: recipeByNameUrl + searchTag.val(),  //passing the meal name in the URL
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+    });
+}
+
+
+
 
 
 
