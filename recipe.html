@@ -4,14 +4,20 @@
         <title>The Ultimate Cookbook - recipe</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel=“stylesheet” type=“text/css” href=“semantic/dist/semantic.min.css”>
-        <link rel=“stylesheet” href=“https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css”>
-        <link rel=“stylesheet” href=“https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js”>
+        <script data-require="jquery" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+        <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
         <header>
-
+                <div class="ui search">
+                    <div class="ui icon input">
+                        <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
+                        <i class="search icon"></i>
+                    </div>
+                    <div class="results"></div>
+                </div>
         </header>
         <div>
             <img id="recipeImg" width="200px" height="auto">
@@ -25,5 +31,6 @@
             </div>
             <div id="recipeVideoDiv"></div>
         </div>
+        <script src="assets/js/script.js"></script>
     </body>
 </html>
