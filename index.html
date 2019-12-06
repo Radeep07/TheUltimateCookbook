@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script data-require="jquery" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="header">
+    <div class="ui grid">
+        <!--div class="twelve wide column"-->
+        
+            <div class="seven wide column">
+                <h1>THE ULTIMATE COOKBOOK</h1>
+            </div>
+            <div class="ui search seven wide column">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
+            </div>          
+        <!--/div-->    
+        <div class="ui compact menu">
+            <div class="ui simple dropdown item">
+            Select Cusine
+            <i class="dropdown icon"></i>
+            <div class="menu" id="menuID">
+                <!--div class="item">a</div-->
+            </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
