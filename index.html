@@ -1,146 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-  <link href="./assets/css/default.css" rel="stylesheet" type="text/css" media="all" />
-  <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
-  <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script data-require="jquery" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+    <link href="./assets/css/default.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Font Awesome CSS Icons (For cool glyphicons) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    
 </head>
-
-
-
-
 <body>
-  <div id="header-wrapper">
-    <div id="header" class="container">
-      <div id="logo">
-        <h1>
-          <a href="#"></i>THE ULTIMATE COOKBOOK</a></h1>
-
-
-
-        <div id="menu">
-          <div class="ui compact menu">
-            <div class="ui simple dropdown item">
-              Select cuisines
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item">English</div>
-                <div class="item">Asian</div>
-                <div class="item">African</div>
-
-              </div>
-
+<div class="header">
+  <div class="ui grid">
+    <!--div class="twelve wide column"-->
+    
+        <div class="seven wide column">
+            <h1>THE ULTIMATE COOKBOOK</h1>
+        </div>
+        <div class="ui search seven wide column">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
+                <i class="search icon"></i>
             </div>
-
-          </div>
+            <div class="results"></div>
+        </div>          
+    <!--/div-->    
+    <div class="ui compact menu">
+        <div class="ui simple dropdown item">
+        Select Cusine
+        <i class="dropdown icon"></i>
+        <div class="menu" id="menuID">
+            <!--div class="item">a</div-->
         </div>
-
-        <div>
-
-          <h3>Search your favourite cuisines</h3>
-          <div class="ui input">
-            <input type="text" placeholder="Search...">
-          </div>
-
         </div>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <figure>
-                  <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="0">
-                  
-                </figure>
-                <h3 class="category">Chicken</h3 data-id="0">
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-              <figure>
-                <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="1">
-              </figure>
-              <h3 class="category">Fish</h3 data-id="1">
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <figure>
-              <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="2">
-            </figure>
-            <h3 class="category">Beef</h3 data-id="2">
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-          <figure>
-            <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="3">
-          </figure>
-          <h3 class="category">Pork</h3 data-id="3">
-      </div>
-        
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-              <figure>
-                <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="4">
-                
-              </figure>
-              <h3 class="category">Chicken</h3 data-id="4">
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <figure>
-              <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="5">
-            </figure>
-            <h3 class="category">Fish</h3 data-id="5">
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-          <figure>
-            <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="6">
-          </figure>
-          <h3 class="category">Beef</h3 data-id="6">
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <figure>
-          <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="7">
-        </figure>
-        <h3 class="category">Pork</h3 data-id="7">
     </div>
-      
-      </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="0">
+        
+      </figure>
+      <h3 class="category">Chicken</h3 data-id="0">
+    </div>
 
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
-            <figure>
-              <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="8">
-              
-            </figure>
-            <h3 class="category">Chicken</h3 data-id="8">
-        </div>
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="1">
+      </figure>
+      <h3 class="category">Fish</h3 data-id="1">
+    </div>
 
-        <div class="col-lg-4 col-md-6">
-          <figure>
-            <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="9">
-          </figure>
-          <h3 class="category">Fish</h3 data-id="9">
-      </div>
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="2">
+      </figure>
+      <h3 class="category">Beef</h3 data-id="2">
+    </div>
 
-      <div class="col-lg-4 col-md-6">
-        <figure>
-          <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="10">
-        </figure>
-        <h3 class="category">Beef</h3 data-id="10">
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="3">
+      </figure>
+      <h3 class="category">Pork</h3 data-id="3">
+    </div>
+  
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="4">
+        
+      </figure>
+      <h3 class="category">Chicken</h3 data-id="4">
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="5">
+      </figure>
+      <h3 class="category">Fish</h3 data-id="5">
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="6">
+      </figure>
+      <h3 class="category">Beef</h3 data-id="6">
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="7">
+      </figure>
+      <h3 class="category">Pork</h3 data-id="7">
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="8">
+        
+      </figure>
+      <h3 class="category">Chicken</h3 data-id="8">
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="9">
+      </figure>
+      <h3 class="category">Fish</h3 data-id="9">
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="10">
+      </figure>
+      <h3 class="category">Beef</h3 data-id="10">
     </div>
 
     <div class="col-lg-4 col-md-6">
@@ -148,24 +135,24 @@
         <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="11">
       </figure>
       <h3 class="category">Pork</h3 data-id="11">
-  </div>
-    
     </div>
 
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-          <figure>
-            <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="12">
-            
-          </figure>
-          <h3 class="category">Chicken</h3 data-id="12">
-      </div>
+  </div>
 
-      <div class="col-lg-4 col-md-6">
-        <figure>
-          <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="13">
-        </figure>
-        <h3 class="category">Fish</h3 data-id="13">
+  <div class="row">
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="12">
+        
+      </figure>
+      <h3 class="category">Chicken</h3 data-id="12">
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="13">
+      </figure>
+      <h3 class="category">Fish</h3 data-id="13">
     </div>
 
     <div class="col-lg-4 col-md-6">
@@ -173,25 +160,19 @@
         <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="14">
       </figure>
       <h3 class="category">Beef</h3 data-id="14">
-  </div>
+    </div>
 
-  <div class="col-lg-4 col-md-6">
-    <figure>
-      <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="15">
-    </figure>
-    <h3 class="category">Pork</h3 data-id="15">
-</div>
+    <div class="col-lg-4 col-md-6">
+      <figure>
+        <img src="./assets/images/1.jpg" alt="image1" class="img" data-id="15">
+      </figure>
+      <h3 class="category">Pork</h3 data-id="15">
+    </div>
+
+  </div>
   
-  </div>
+</div>
 
-        
-
-
-      </div>
-
-
-
-
+<script src="script.js"></script>
 </body>
-
 </html>
