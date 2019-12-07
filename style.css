@@ -1,0 +1,28 @@
+.ui
+{
+    background-color: bisque;
+}
+
+.thirteen{
+   box-align:left;
+   float:left;
+   width: 75%;
+}
+
+.input{
+    float:left;
+    width: 95%;    
+}
+
+h1{
+    margin-left: 25px;
+    float: left;
+}
+
+.menu{
+    float: right;   
+}
+
+.compact{
+    height: 55px;
+}
