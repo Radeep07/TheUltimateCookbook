@@ -9,7 +9,7 @@
         <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
-    <body>
+    <body onload="fillRecipeDetails()">
         <header>
                 <div class="ui search">
                     <div class="ui icon input">
@@ -27,7 +27,7 @@
             </div>
             <div>
                 <p>Instructions:</p>
-                <p id="Instructions"></p>
+                <p id="instructions"></p>
             </div>
             <div id="recipeVideoDiv"></div>
         </div>

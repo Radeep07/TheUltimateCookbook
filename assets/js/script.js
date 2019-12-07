@@ -21,11 +21,11 @@ $.ajax({
             url: recipesInCategoryUrl + categoryName,  //passing the category name in the URL
             method: "GET"
         }).then(function(response) {
-            for(var j=0; j<response.meals.length; j++) {
+            var recipes = getAllRecipesInCategory(response);
+            for(var j=0; j<recipes.length; j++) {
                 //parsing each meal name from the response object and adding the meal name to the content list
-                var mealName = response.meals[j].strMeal;
                 var meal = {
-                    title : mealName
+                    title : recipes[j].name
                 };
                 content.push(meal);
             }
@@ -37,6 +37,7 @@ $.ajax({
         });
     }
 });
+//Function to return list of category objects containing the category name and thumbnail.
 function getAllCategories(response) {
     var categoryList = [];
     for(var i=0; i<response.categories.length; i++) {
@@ -48,6 +49,18 @@ function getAllCategories(response) {
     }
     return categoryList;
 }
+//Function to return list of recipe objects containing the recipe name and thumbnail.
+function getAllRecipesInCategory(response) {
+    var recipeList = [];
+    for(var i=0; i<response.meals.length; i++) {
+        var recipe = { 
+            name: response.meals[i].strMeal,
+            thumbnail: response.meals[i].strMealThumb
+         };
+         recipeList.push(recipe);
+    }
+    return recipeList;
+}
 //When user selects recipe name from the search recommendation, add
 $(document).on("click", ".title", getRecipeByName);
 
@@ -56,11 +69,18 @@ function getRecipeByName() {
         url: recipeByNameUrl + searchTag.val(),  //passing the meal name in the URL
         method: "GET"
     }).then(function(response) {
-        console.log(response);
+        sessionStorage.setItem("recipe", JSON.stringify(response));
+        document.location.replace("recipe.html");
     });
 }
 
-
+function fillRecipeDetails() {
+    var recipe = JSON.parse(sessionStorage.getItem("recipe"));
+    console.log(recipe);
+    $("#name").text(recipe.meals[0].strMeal);
+    $("#recipeImg").attr("src", recipe.meals[0].strMealThumb);
+    $("#instructions").text(recipe.meals[0].strInstructions);
+}
 
 
 
