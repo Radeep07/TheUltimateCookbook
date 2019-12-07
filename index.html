@@ -14,30 +14,28 @@
 <body>
 <div class="header">
     <div class="ui grid">
-        <!--div class="twelve wide column"-->
+        <!--Menu header-->
+        <div class="six wide column">
+            <h1>THE ULTIMATE COOKBOOK</h1>
+        </div>
         
-            <div class="seven wide column">
-                <h1>THE ULTIMATE COOKBOOK</h1>
+        <div class="ui search six wide column">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
+                <i class="search icon"></i>
             </div>
-            <div class="ui search seven wide column">
-                <div class="ui icon input">
-                    <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
-                    <i class="search icon"></i>
-                </div>
-                <div class="results"></div>
-            </div>          
-        <!--/div-->    
+            <div class="results"></div>
+        </div>          
+           
         <div class="ui compact menu">
             <div class="ui simple dropdown item">
-            Select Cusine
-            <i class="dropdown icon"></i>
-            <div class="menu" id="menuID">
-                <!--div class="item">a</div-->
-            </div>
+                Select Cuisine
+                <i class="dropdown icon"></i>
+                <div class="menu" id="menuID">                
+                </div>
             </div>
         </div>
-    </div>
-    
+    </div>    
 </div>
 
 <script src="script.js"></script>

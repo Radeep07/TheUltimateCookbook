@@ -3,26 +3,29 @@
     background-color: bisque;
 }
 
-.thirteen{
-   box-align:left;
-   float:left;
-   width: 75%;
-}
-
 .input{
     float:left;
-    width: 95%;    
+    width: 95%;  
+    margin-right: 50px;  
 }
 
 h1{
-    margin-left: 25px;
+    margin-left: 30px;
     float: left;
 }
 
-.menu{
-    float: right;   
+#menuID{
+    float: right;  
+    height:200px;
+    overflow-y: scroll;     
 }
 
-.compact{
+.ui.compact.menu{
     height: 55px;
+    width: 160px;
+    
+}
+.ui.simple.dropdown.item{
+    width: 145px;
+    font-weight: bold;
 }
