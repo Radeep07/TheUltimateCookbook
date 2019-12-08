@@ -75,11 +75,43 @@ function getRecipeByName() {
 }
 
 function fillRecipeDetails() {
+    //Reading the saved recipe from sessionStorage
     var recipe = JSON.parse(sessionStorage.getItem("recipe"));
     console.log(recipe);
+    //Adding the recipe name
     $("#name").text(recipe.meals[0].strMeal);
+    //Adding image for recipe
     $("#recipeImg").attr("src", recipe.meals[0].strMealThumb);
-    $("#instructions").text(recipe.meals[0].strInstructions);
+
+    //Adding the recipe ingredients in ingredients div in an unordered list
+    var ingredientStr = "strIngredient";
+    var measureStr = "strMeasure";
+    var ingredientCount = 1;
+    var ingredientKey = ingredientStr + ingredientCount;
+    var measureKey = measureStr + ingredientCount;
+
+    while(recipe.meals[0][ingredientKey] !== "") {
+        var newUlTag = $("<ul>");
+        var newLiTag = $("<li>").text(recipe.meals[0][ingredientKey] + " : " + recipe.meals[0][measureKey]);
+        newUlTag.append(newLiTag);
+        $("#ingredientsDiv").append(newUlTag);
+        ingredientCount++;
+        ingredientKey = ingredientStr + ingredientCount;
+        measureKey = measureStr + ingredientCount;
+    }
+
+    //Adding the recipe instructions in unordered list in instructions div
+    var instructions = recipe.meals[0].strInstructions;
+    var instArr = instructions.split(".");
+    for(var i=0; i<instArr.length-1; i++) {
+        if(instArr[i].split(" ").length == 1) {
+            continue;
+        }
+        var newUlTag = $("<ul>");
+        var newLiTag = $("<li>").text(instArr[i] + ".");
+        newUlTag.append(newLiTag);
+        $("#instructions").append(newUlTag);
+    }
 }
 
 
