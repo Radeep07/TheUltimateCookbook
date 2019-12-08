@@ -1,3 +1,17 @@
 ul {
     margin-bottom: 0.5rem;
 }
+
+#recipeDetails {
+    display: none;
+}
+
+#searchTxt {
+    width: 100%;
+}
+
+#recipeImg {
+    float: right;
+    border-radius: 10px;
+    margin: 20px;
+}
