@@ -71,7 +71,7 @@ function getRecipeByName() {
         method: "GET"
     }).then(function(response) {
         sessionStorage.setItem("recipe", JSON.stringify(response));
-        document.location.replace("recipe.html");
+        document.location = "recipe.html";
     });
 }
 
@@ -79,7 +79,6 @@ function fillRecipeDetails() {
     //Reading the saved recipe from sessionStorage
     var recipe = JSON.parse(sessionStorage.getItem("recipe"));
     if(recipe !== null) {
-        console.log(recipe);
         $("#recipeDetails").attr("style", "display:block;")
         //Adding the recipe name
         $("#name").text(recipe.meals[0].strMeal);
