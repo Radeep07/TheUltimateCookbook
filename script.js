@@ -75,3 +75,50 @@ $.ajax({
         });
     }
 });
+
+
+
+$(".img").on("click", function(event){
+
+    event.preventDefault();
+
+    console.log($(this));
+    var categoryName = $(this).attr("data-name");
+    $.ajax({
+        url: recipesInCategory + categoryName,
+        method: "GET"
+    }).then(function(response){
+
+        console.log(response);
+        clearAllRecipeDivs();
+
+        
+
+            for( var i=0; i< response.meals.length; i++){
+            
+            $("img").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).attr("src", response.meals[i].strMealThumb);
+                    $(this).attr("text", response.meals[i].idMeal);
+                }
+
+                console.log(response.meals[i]);
+
+            });
+
+        }
+
+        });
+
+    });
+
+
+function clearAllRecipeDivs() {
+    $(".img").map(function() {
+        $(this).attr("src", "");
+        $(this).attr("alt", "")
+    });
+    $(".category").map(function() {
+        $(this).text(" ");
+    });
+}
