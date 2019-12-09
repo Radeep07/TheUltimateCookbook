@@ -137,6 +137,19 @@ function parseRecipeResponse(recipe) {
         newUlTag.append(newLiTag);
         $("#instructions").append(newUlTag);
     }
+
+    //Parsing youtube ID from the parameter in youtube link
+    var youtubeLink = recipe.meals[0].strYoutube.split("?v=");
+    $("#youtube").attr("data-youtubeId", youtubeLink[1]);
+    embedYoutubeVideo();
+
 }
 
-
+function embedYoutubeVideo() {
+    var youtube = $("#youtube");
+    // Create an iFrame with autoplay set to true
+    var iframe = $("<iframe>");
+    iframe.attr("src", "https://www.youtube.com/embed/" + youtube.attr("data-youtubeId") + "?autoplay=1"); 
+    iframe.attr("style", "width:560px; height: 315px;");
+    youtube.append(iframe);
+}
