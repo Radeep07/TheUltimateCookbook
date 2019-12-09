@@ -18,7 +18,7 @@ $(document).ready(function () {
         //function call for filling the dropdown box items
         fillDropdown(categoryAreaName);
     });//end of funtion
-    });//end of document load
+});//end of document load
 
     //function for filling the dropdown box items
     function fillDropdown(categoryAreaName) {
@@ -89,3 +89,78 @@ $.ajax({
         });
     }
 });
+$(".img").map(function() {
+       
+    if($(this).attr("data-id") == 14 || $(this).attr("data-id") == 15){
+        $(this).attr("style", "display : none");
+    }
+});
+
+$(".category").map(function() {
+       
+    if($(this).attr("data-id") == 14 || $(this).attr("data-id") == 15){
+        $(this).attr("style", "display : none");
+    }
+});
+
+
+$(".img").on("click", function(event){
+
+    event.preventDefault();
+
+    console.log($(this));
+    var categoryName = $(this).attr("data-name");
+    $.ajax({
+        url: recipesInCategory + categoryName,
+        method: "GET"
+    }).then(function(response){
+
+        console.log(response);
+        clearAllRecipeDivs();
+
+        
+
+            for( var i=0; i< response.meals.length; i++){
+            
+            $("img").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).attr("src", response.meals[i].strMealThumb);
+                    
+                
+                }
+            });
+
+            $(".category").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).text(response.meals[i].strMeal);
+
+                    console.log(response.meals[i].strMeal);
+                
+                }
+            });
+
+
+            
+        }
+
+       
+
+        });
+    });
+
+
+function clearAllRecipeDivs() {
+    $(".img").map(function() {
+        $(this).attr("src", "");
+        $(this).attr("alt", "")
+    });
+    
+    $(".category").map(function() {
+        $(this).text(" ");
+    });
+
+
+    
+
+
+}
