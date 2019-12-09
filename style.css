@@ -21,13 +21,16 @@ h1{
 }
 
 .ui.floating.dropdown.labeled.search.icon.button{
-    height: 55px;
-    width: 160px;
+    height: 50px;
+    width: 170px;
+    background-color: white;
+    margin-top: 10px;
     
 }
 .item{
     width: 145px;
     font-weight: bold;
+    background-color: white;
 }
 
 ul {

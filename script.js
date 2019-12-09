@@ -1,5 +1,6 @@
 //variable storing the URL to to fetch all recipes in a selected category
 var recipesInAreaCategoryUrl = "https://www.themealdb.com/api/json/v1/1/list.php?a=";
+var recipesAreaWiseUrl="https://www.themealdb.com/api/json/v1/1/filter.php?a="
 
 //ajax call to fetch all categories by area
 
@@ -36,12 +37,36 @@ $(document).ready(function () {
     //end of menu dropdown
 
     
-    $(document).on("click", ".item", function(){
-        var areaTag=console.log($(this).text());
+    $(document).on("click", ".item", function(event){
+        event.preventDefault();
+        var areaTag=$(this).text();
         $.ajax({
-            url: recipesInAreaCategoryUrl+areaTag,  //passing the area name in the URL
+            url: recipesAreaWiseUrl+areaTag,  //passing the area name in the URL
             method: "GET"
         }).then(function(response) {
+            clearAllRecipeDivs();//clear current content page
+
+        for( var i=0; i< response.meals.length; i++){
+        
+            $("img").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).attr("src", response.meals[i].strMealThumb);
+                    
+                
+                }
+            });
+
+            $(".category").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).text(response.meals[i].strMeal);
+
+                    console.log(response.meals[i].strMeal);
+                
+                }
+            });
+        }
+            
+
             
 
         });
