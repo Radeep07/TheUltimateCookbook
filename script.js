@@ -93,47 +93,33 @@ $(".category").map(function() {
 $(".img").on("click", function(event){
 
     event.preventDefault();
-
     console.log($(this));
+
     var categoryName = $(this).attr("data-name");
     $.ajax({
         url: recipesInCategory + categoryName,
         method: "GET"
     }).then(function(response){
-
         console.log(response);
         clearAllRecipeDivs();
 
+        for( var i=0; i< response.meals.length; i++){
         
-
-            for( var i=0; i< response.meals.length; i++){
-            
             $("img").map(function() {
                 if($(this).attr("data-id") == i) {
                     $(this).attr("src", response.meals[i].strMealThumb);
-                    
-                
                 }
             });
 
             $(".category").map(function() {
                 if($(this).attr("data-id") == i) {
                     $(this).text(response.meals[i].strMeal);
-
                     console.log(response.meals[i].strMeal);
-                
                 }
-            });
-
-
-            
+            });     
         }
-
-       
-
-        });
     });
-
+});
 
 function clearAllRecipeDivs() {
     $(".img").map(function() {
