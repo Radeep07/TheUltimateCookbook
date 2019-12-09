@@ -144,7 +144,6 @@ function parseRecipeResponse(recipe) {
     embedYoutubeVideo();
 
 }
-
 function embedYoutubeVideo() {
     var youtube = $("#youtube");
     // Create an iFrame with autoplay set to true
@@ -153,3 +152,4 @@ function embedYoutubeVideo() {
     iframe.attr("style", "width:560px; height: 315px;");
     youtube.append(iframe);
 }
+
