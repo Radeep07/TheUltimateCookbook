@@ -79,6 +79,7 @@ function fillRecipeDetails() {
     //Reading the saved recipe from sessionStorage
     var recipe = JSON.parse(sessionStorage.getItem("recipe"));
     if(recipe !== null) {
+        console.log(recipe);
         $("#recipeDetails").attr("style", "display:block;")
         //Adding the recipe name
         $("#name").text(recipe.meals[0].strMeal);
