@@ -29,3 +29,7 @@ h1{
     width: 145px;
     font-weight: bold;
 }
+
+ul {
+    margin-bottom: 0.5rem;
+}
