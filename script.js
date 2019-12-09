@@ -18,7 +18,7 @@ $(document).ready(function () {
         //function call for filling the dropdown box items
         fillDropdown(categoryAreaName);
     });//end of funtion
-    });//end of document load
+});//end of document load
 
     //function for filling the dropdown box items
     function fillDropdown(categoryAreaName) {

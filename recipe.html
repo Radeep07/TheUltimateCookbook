@@ -4,6 +4,7 @@
         <title>The Ultimate Cookbook - recipe</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script data-require="jquery" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
         <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
@@ -19,18 +20,23 @@
                     <div class="results"></div>
                 </div>
         </header>
-        <div>
-            <img id="recipeImg" width="200px" height="auto">
-            <p id="name"></p>
-            <p>Ingredients:</p>
-            <div id="ingredientsDiv">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 id="name"></h2>
+                    <img id="recipeImg" width="400px" height="auto">
+                    <div id="recipeDetails">
+                        <h3>Ingredients:</h3>
+                        <div id="ingredientsDiv">
+                        </div>
+                        <h3>Instructions:</h3>
+                        <p id="instructions"></p>
+                        <div id="" style="width:560px; height: 315px;">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p>Instructions:</p>
-                <p id="instructions"></p>
-            </div>
-            <div id="recipeVideoDiv"></div>
         </div>
-        <script src="assets/js/script.js"></script>
+        <script src="assets/js/recipeScript.js"></script>
     </body>
 </html>
