@@ -147,11 +147,11 @@ $(".img").on("click", function(event){
 
             for( var i=0; i< response.meals.length; i++){
             
-            $("img").map(function() {
+            $(".img").map(function() {
                 if($(this).attr("data-id") == i) {
                     $(this).attr("src", response.meals[i].strMealThumb);
-                    
-                
+                    $(this).attr("data-recipeId", response.meals[i].idMeal);
+                    $(this).attr("data-name", "");
                 }
             });
 
@@ -159,19 +159,23 @@ $(".img").on("click", function(event){
                 if($(this).attr("data-id") == i) {
                     $(this).text(response.meals[i].strMeal);
 
-                    console.log(response.meals[i].strMeal);
-                
+                    
                 }
             });
-
-
-            
         }
 
        
 
         });
     });
+
+$(".headLine").on("click", function(){
+
+event.preventDefault();
+
+
+
+});
 
 
 function clearAllRecipeDivs() {
