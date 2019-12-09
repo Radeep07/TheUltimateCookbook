@@ -20,16 +20,20 @@ h1{
     overflow-y: scroll;     
 }
 
-.ui.compact.menu{
-    height: 55px;
-    width: 160px;
+.ui.floating.dropdown.labeled.search.icon.button{
+    height: 50px;
+    width: 170px;
+    background-color: white;
+    margin-top: 10px;
     
 }
-.ui.simple.dropdown.item{
+.item{
     width: 145px;
     font-weight: bold;
+    background-color: white;
 }
 
 ul {
     margin-bottom: 0.5rem;
 }
+

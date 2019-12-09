@@ -1,5 +1,6 @@
 //variable storing the URL to to fetch all recipes in a selected category
 var recipesInAreaCategoryUrl = "https://www.themealdb.com/api/json/v1/1/list.php?a=";
+var recipesAreaWiseUrl="https://www.themealdb.com/api/json/v1/1/filter.php?a="
 
 //ajax call to fetch all categories by area
 
@@ -29,10 +30,48 @@ $(document).ready(function () {
             list.attr("class","item");
             list.text(categoryAreaName[m]);
             menuVar.append(list);
-        }         
+        } 
+        $('.ui.dropdown').dropdown();    
+        //checkForItemSelected(categoryAreaName);              
     }
     //end of menu dropdown
 
+    
+    $(document).on("click", ".item", function(event){
+        event.preventDefault();
+        var areaTag=$(this).text();
+        $.ajax({
+            url: recipesAreaWiseUrl+areaTag,  //passing the area name in the URL
+            method: "GET"
+        }).then(function(response) {
+            clearAllRecipeDivs();//clear current content page
+
+        for( var i=0; i< response.meals.length; i++){
+        
+            $("img").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).attr("src", response.meals[i].strMealThumb);
+                    
+                
+                }
+            });
+
+            $(".category").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).text(response.meals[i].strMeal);
+
+                    console.log(response.meals[i].strMeal);
+                
+                }
+            });
+        }
+            
+
+            
+
+        });
+
+    });   
 
 var searchTag = $("#search");
 //variable storing the URL to fetch all recipe categories
@@ -104,22 +143,23 @@ $(".img").on("click", function(event){
         clearAllRecipeDivs();
 
         for( var i=0; i< response.meals.length; i++){
-        
-            $("img").map(function() {
+            $(".img").map(function() {
                 if($(this).attr("data-id") == i) {
                     $(this).attr("src", response.meals[i].strMealThumb);
+                    $(this).attr("data-recipeId", response.meals[i].idMeal);
+                    $(this).attr("data-name", "");
                 }
             });
 
             $(".category").map(function() {
                 if($(this).attr("data-id") == i) {
-                    $(this).text(response.meals[i].strMeal);
-                    console.log(response.meals[i].strMeal);
+                    $(this).text(response.meals[i].strMeal);          
                 }
-            });     
+            });
         }
     });
 });
+
 
 function clearAllRecipeDivs() {
     $(".img").map(function() {
@@ -130,9 +170,4 @@ function clearAllRecipeDivs() {
     $(".category").map(function() {
         $(this).text(" ");
     });
-
-
-    
-
-
 }
