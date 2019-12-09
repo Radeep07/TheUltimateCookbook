@@ -61,16 +61,16 @@ function getAllRecipesInCategory(response) {
     }
     return recipeList;
 }
-//When user selects recipe name from the search recommendation, add
+//When user selects recipe name from the search recommendation, call getRecipeByName() function
 $(document).on("click", ".title", getRecipeByName);
 
 function getRecipeByName() {
-    console.log(recipeByNameUrl + searchTag.val());
     $.ajax({
         url: recipeByNameUrl + searchTag.val(),  //passing the meal name in the URL
         method: "GET"
     }).then(function(response) {
         sessionStorage.setItem("recipe", JSON.stringify(response));
+        sessionStorage.setItem("recipeId", null);
         document.location = "recipe.html";
     });
 }
@@ -78,51 +78,78 @@ function getRecipeByName() {
 function fillRecipeDetails() {
     //Reading the saved recipe from sessionStorage
     var recipe = JSON.parse(sessionStorage.getItem("recipe"));
-    if(recipe !== null) {
-        console.log(recipe);
-        $("#recipeDetails").attr("style", "display:block;")
-        //Adding the recipe name
-        $("#name").text(recipe.meals[0].strMeal);
-        //Adding image for recipe
-        $("#recipeImg").attr("src", recipe.meals[0].strMealThumb);
-
-        //Adding the recipe ingredients in ingredients div in an unordered list
-        var ingredientStr = "strIngredient";
-        var measureStr = "strMeasure";
-        var ingredientCount = 1;
-        var ingredientKey = ingredientStr + ingredientCount;
-        var measureKey = measureStr + ingredientCount; 
-
-        //Increment the ingredientCount and access the ingredients until the ingridient name is empty
-        while(recipe.meals[0][ingredientKey] !== "" && recipe.meals[0][ingredientKey] !== null && recipe.meals[0][ingredientKey] !== undefined) {
-            var newUlTag = $("<ul>");
-            var newLiTag = $("<li>").text(recipe.meals[0][ingredientKey] + " : " + recipe.meals[0][measureKey]);
-            newUlTag.append(newLiTag);
-            $("#ingredientsDiv").append(newUlTag);
-            ingredientCount++;
-            ingredientKey = ingredientStr + ingredientCount;
-            measureKey = measureStr + ingredientCount;
+    if(recipe == null) {
+        var recipeId = JSON.parse(sessionStorage.getItem("recipeId"));
+        //display recipe not found error message to user
+        if(recipeId === null || recipeId === "" || recipeId === undefined) {
+            $("#name").text("Sorry! This recipe is currently unavailable!");
         }
-
-        //Adding the recipe instructions in unordered list in instructions div
-        var instructions = recipe.meals[0].strInstructions;
-        var instArr = instructions.split(".");
-        for(var i=0; i<instArr.length-1; i++) {
-            if(instArr[i].split(" ").length == 1) {
-                continue;
-            }
-            var newUlTag = $("<ul>");
-            var newLiTag = $("<li>").text(instArr[i] + ".");
-            newUlTag.append(newLiTag);
-            $("#instructions").append(newUlTag);
+        else {
+            var recipeByIdUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
+            $.ajax({
+                url: recipeByIdUrl + recipeId,  //passing the category name in the URL
+                method: "GET"
+            }).then(function(response) {
+                parseRecipeResponse(response);
+            });
         }
     }
-    //If recipe returned is null, then display recipe not found error message to user
     else {
-        $("#name").text("Sorry! This recipe is currently unavailable!");
+        parseRecipeResponse(recipe);      
     }
 }
 
+function parseRecipeResponse(recipe) {
+    console.log(recipe);
+    $("#recipeDetails").attr("style", "display:block;")
+    //Adding the recipe name
+    $("#name").text(recipe.meals[0].strMeal);
+    //Adding image for recipe
+    $("#recipeImg").attr("src", recipe.meals[0].strMealThumb);
 
+    //Adding the recipe ingredients in ingredients div in an unordered list
+    var ingredientStr = "strIngredient";
+    var measureStr = "strMeasure";
+    var ingredientCount = 1;
+    var ingredientKey = ingredientStr + ingredientCount;
+    var measureKey = measureStr + ingredientCount; 
 
+    //Increment the ingredientCount and access the ingredients until the ingridient name is empty
+    while(recipe.meals[0][ingredientKey] !== "" && recipe.meals[0][ingredientKey] !== null && recipe.meals[0][ingredientKey] !== undefined) {
+        var newUlTag = $("<ul>");
+        var newLiTag = $("<li>").text(recipe.meals[0][ingredientKey] + " : " + recipe.meals[0][measureKey]);
+        newUlTag.append(newLiTag);
+        $("#ingredientsDiv").append(newUlTag);
+        ingredientCount++;
+        ingredientKey = ingredientStr + ingredientCount;
+        measureKey = measureStr + ingredientCount;
+    }
+
+    //Adding the recipe instructions in unordered list in instructions div
+    var instructions = recipe.meals[0].strInstructions;
+    var instArr = instructions.split(".");
+    for(var i=0; i<instArr.length-1; i++) {
+        if(instArr[i].split(" ").length == 1) {
+            continue;
+        }
+        var newUlTag = $("<ul>");
+        var newLiTag = $("<li>").text(instArr[i] + ".");
+        newUlTag.append(newLiTag);
+        $("#instructions").append(newUlTag);
+    }
+
+    //Parsing youtube ID from the parameter in youtube link
+    var youtubeLink = recipe.meals[0].strYoutube.split("?v=");
+    $("#youtube").attr("data-youtubeId", youtubeLink[1]);
+    embedYoutubeVideo();
+
+}
+function embedYoutubeVideo() {
+    var youtube = $("#youtube");
+    // Create an iFrame with autoplay set to true
+    var iframe = $("<iframe>");
+    iframe.attr("src", "https://www.youtube.com/embed/" + youtube.attr("data-youtubeId") + "?autoplay=1"); 
+    iframe.attr("style", "width:560px; height: 315px;");
+    youtube.append(iframe);
+}
 
