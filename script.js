@@ -29,10 +29,24 @@ $(document).ready(function () {
             list.attr("class","item");
             list.text(categoryAreaName[m]);
             menuVar.append(list);
-        }         
+        } 
+        $('.ui.dropdown').dropdown();    
+        //checkForItemSelected(categoryAreaName);              
     }
     //end of menu dropdown
 
+    
+    $(document).on("click", ".item", function(){
+        var areaTag=console.log($(this).text());
+        $.ajax({
+            url: recipesInAreaCategoryUrl+areaTag,  //passing the area name in the URL
+            method: "GET"
+        }).then(function(response) {
+            
+
+        });
+
+    });   
 
 var searchTag = $("#search");
 //variable storing the URL to fetch all recipe categories
