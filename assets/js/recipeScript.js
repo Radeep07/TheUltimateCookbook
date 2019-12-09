@@ -61,11 +61,10 @@ function getAllRecipesInCategory(response) {
     }
     return recipeList;
 }
-//When user selects recipe name from the search recommendation, add
+//When user selects recipe name from the search recommendation, call getRecipeByName() function
 $(document).on("click", ".title", getRecipeByName);
 
 function getRecipeByName() {
-    console.log(recipeByNameUrl + searchTag.val());
     $.ajax({
         url: recipeByNameUrl + searchTag.val(),  //passing the meal name in the URL
         method: "GET"
@@ -101,6 +100,7 @@ function fillRecipeDetails() {
 }
 
 function parseRecipeResponse(recipe) {
+    console.log(recipe);
     $("#recipeDetails").attr("style", "display:block;")
     //Adding the recipe name
     $("#name").text(recipe.meals[0].strMeal);

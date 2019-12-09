@@ -46,12 +46,12 @@ $(document).on("click", ".item", function(event){
         clearAllRecipeDivs();//clear current content page
 
         for( var i=0; i< response.meals.length; i++){  
+
             $("img").map(function() {
                 if($(this).attr("data-id") == i) {
                     $(this).attr("src", response.meals[i].strMealThumb);
-                    $(this).attr("data-name", " ");
+                    $(this).attr("data-name", "");
                     $(this).attr("data-recipeId", response.meals[i].idMeal );
-                
                 }
             });
 
@@ -99,19 +99,6 @@ $.ajax({
         });
     }
 });
-$(".img").map(function() {
-       
-    if($(this).attr("data-id") == 14 || $(this).attr("data-id") == 15){
-        $(this).attr("style", "display : none");
-    }
-});
-
-$(".category").map(function() {
-       
-    if($(this).attr("data-id") == 14 || $(this).attr("data-id") == 15){
-        $(this).attr("style", "display : none");
-    }
-});
 
 $(".img").on("click", function(event){
 
@@ -128,7 +115,8 @@ $(".img").on("click", function(event){
             console.log(response);
             clearAllRecipeDivs();
     
-            for( var i=0; i< response.meals.length; i++){
+            for(var i=0; i< response.meals.length; i++){
+                
                 $(".img").map(function() {
                     if($(this).attr("data-id") == i) {
                         $(this).attr("src", response.meals[i].strMealThumb);
@@ -161,7 +149,7 @@ function clearAllRecipeDivs() {
     });
     
     $(".category").map(function() {
-        $(this).text(" ");
+        $(this).text("");
     });
 }
 
@@ -170,7 +158,6 @@ function fillCategories(){
         url: allCategoriesUrl,
         method: "GET"
     }).then(function(response){
-        
         clearAllRecipeDivs();
         for( var i=0; i< response.categories.length; i++){
             $(".img").map(function() {
@@ -178,8 +165,6 @@ function fillCategories(){
                     $(this).attr("src", response.categories[i].strCategoryThumb);
                     $(this).attr("data-recipeId", "");
                     $(this).attr("data-name", response.categories[i].strCategory);
-                
-                    console.log(response.categories);
                 }
             });
             $(".category").map(function() {
