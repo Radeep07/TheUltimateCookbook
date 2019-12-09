@@ -12,34 +12,39 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     <link href="./assets/css/default.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" /-->
     
 </head>
 <body>
 <div class="header">
+  <!--div class="fourteen wide column"-->   
   <div class="ui grid">
-    <!--div class="twelve wide column"-->
     
-        <div class="seven wide column">
-            <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
+    <div class="seven wide column">
+        <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
+    </div>
+
+    <div class="ui search three wide column">
+        <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
+            <i class="search icon"></i>
         </div>
-        <div class="ui search seven wide column">
-            <div class="ui icon input">
-                <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
-                <i class="search icon"></i>
-            </div>
-            <div class="results"></div>
-        </div>          
-    <!--/div-->    
-    <div class="ui simple floating dropdown labeled search icon button">
+        <div class="results"></div>
+    </div>  
+    
+    <div class="ui two wide column"></div>
+
+    <div class="ui simple floating dropdown labeled search icon button two wide column">
       <i class="world icon"></i>
       <span class="text">Select Cuisine</span>
       <div class="menu" id="menuID">
             <!--div class="item"></div-->
       </div>       
     </div>
-  </div>
-</div>
+    <div class="sixteen wide column" id="display-category"></div>
+    
+  </div><!--end of ui grid-->
+</div><!--end of header-->
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-4 col-md-6 recipeDiv">

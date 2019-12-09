@@ -35,11 +35,23 @@ $(document).ready(function () {
         //checkForItemSelected(categoryAreaName);              
     }
     //end of menu dropdown
+    
 
     
     $(document).on("click", ".item", function(event){
         event.preventDefault();
         var areaTag=$(this).text();
+        var displayCategoryName=$("<h2>");
+        var displayCategoryNameDiv = $("#display-category")
+        displayCategoryName.text("The Cuisines of "+areaTag+":");
+        /* while (displayCategoryNameDiv.hasChildNodes()){
+            
+        }
+        displayCategoryNameDiv.append(displayCategoryName); */
+        displayCategoryNameDiv.html(displayCategoryName);
+        
+
+
         $.ajax({
             url: recipesAreaWiseUrl+areaTag,  //passing the area name in the URL
             method: "GET"
