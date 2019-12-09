@@ -48,14 +48,16 @@ $(document).on("click", ".item", function(event){
         for( var i=0; i< response.meals.length; i++){  
             $("img").map(function() {
                 if($(this).attr("data-id") == i) {
-                    $(this).attr("src", response.meals[i].strMealThumb);        
+                    $(this).attr("src", response.meals[i].strMealThumb);
+                    $(this).attr("data-name", " ");
+                    $(this).attr("data-recipeId", response.meals[i].idMeal );
+                
                 }
             });
 
             $(".category").map(function() {
                 if($(this).attr("data-id") == i) {
                     $(this).text(response.meals[i].strMeal);
-                    console.log(response.meals[i].strMeal);    
                 }
             });
         }
@@ -162,3 +164,34 @@ function clearAllRecipeDivs() {
         $(this).text(" ");
     });
 }
+
+function fillCategories(){
+    $.ajax({
+        url: allCategoriesUrl,
+        method: "GET"
+    }).then(function(response){
+        
+        clearAllRecipeDivs();
+        for( var i=0; i< response.categories.length; i++){
+            $(".img").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).attr("src", response.categories[i].strCategoryThumb);
+                    $(this).attr("data-recipeId", "");
+                    $(this).attr("data-name", response.categories[i].strCategory);
+                
+                    console.log(response.categories);
+                }
+            });
+            $(".category").map(function() {
+                if($(this).attr("data-id") == i) {
+                    $(this).text(response.categories[i].strCategory);            
+                }
+            });
+        }
+    });
+}
+
+$(".headLine").on("click", function(){
+    event.preventDefault();
+    fillCategories();
+});
