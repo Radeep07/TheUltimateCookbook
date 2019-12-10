@@ -11,35 +11,41 @@
     <link rel="stylesheet" href="style.css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     <link href="./assets/css/default.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    
+        
 </head>
 <body onload="fillCategories();">
 <div class="header">
-  <div class="ui grid" id="topBar">
-    <!--div class="twelve wide column"-->
-    
-        <div class="seven wide column">
-            <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
-        </div>
-        <div class="ui search seven wide column">
-            <div class="ui icon input">
-                <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
-                <i class="search icon"></i>
+  <div class="ui center aligned stackable grid" id="topBar">
+    <!--div class="sixteen wide column"-->
+    <div class="row">
+      <div class="eight wide middle aligned column">
+          <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
+      </div>
+      <!--div class= "ui nine"-->
+      <div class="four wide middle aligned column">
+          <div class="ui search">
+              <div class="ui icon input">
+                  <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
+                  <i class="search icon"></i>
+              </div>
+              <div class="results"></div>
+          </div>
+      </div>
+              
+        <div class="four wide middle aligned column">
+          <div class="ui simple floating dropdown labeled search icon button">
+              <i class="world icon"></i>
+              <span class="text">Select Cuisine</span>
+              <div class="menu" id="menuID">                
+              </div>       
             </div>
-            <div class="results"></div>
-        </div>          
-    <!--/div-->    
-    <div class="ui simple floating dropdown labeled search icon button">
-      <i class="world icon"></i>
-      <span class="text">Select Cuisine</span>
-      <div class="menu" id="menuID">
-            <!--div class="item"></div-->
-      </div>       
-    </div>
-  </div>
-</div>
+        </div> 
+    </div><!--end of row-->
+    
+        
+</div><!--end of ui grid-->
+</div><!--end of header-->
+
 <div class="ui stackable grid">
   <div class="ui stackable row">
     <div class="four wide column recipeDiv">   
@@ -179,6 +185,12 @@
       </div>
     </div>
   </div>
+  <footer>
+    <p> &copyCopyright 2019. <br>
+      All right reserved. Powered by "TheMealDB"
+    </p>
+
+  </footer>
 <script src="script.js"></script>
 <script src="assets/js/recipeScript.js"></script>
 </body>
