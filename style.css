@@ -91,3 +91,10 @@ figure {
     .ui.grid .row {
         padding-bottom: 0px;
     }
+
+    footer{
+        background-color: bisque;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
