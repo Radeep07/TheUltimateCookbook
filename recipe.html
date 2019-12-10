@@ -4,7 +4,6 @@
         <title>The Ultimate Cookbook - recipe</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script data-require="jquery" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
         <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
@@ -12,11 +11,11 @@
     </head>
     <body onload="fillRecipeDetails()">
         <div class="header">
-            <div class="ui grid">
+            <div class="ui grid container">
                 <div class="seven wide column">
-                    <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
+                    <h1 class="headLine">THE ULTIMATE &#10;COOKBOOK</h1>
                 </div>
-                <div class="ui search seven wide column">
+                <div class="ui search right floated right aligned seven wide column">
                     <div class="ui icon input">
                         <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
                         <i class="search icon"></i>
@@ -24,19 +23,34 @@
                     <div class="results"></div>
                 </div>          
             </div>
-        <div class="container">
+        <div class="ui stackable grid container segment">
             <div class="row">
-                <div class="col">
-                    <h2 id="name"></h2>
-                    <img id="recipeImg">
-                    <div id="recipeDetails">
-                        <h3>Ingredients:</h3>
-                        <div id="ingredientsDiv">
+                <h2 id="name"></h2>
+            </div>
+            <div class="ui segment two column row">
+                <div class="five wide column centered">
+                    <img class="ui centered image" id="recipeImg">
+                </div>
+                <div class="ten wide column centered" id="recipeDetails">
+                    <div class="ui grid">
+                        <div class="eight wide column">
+                            <h3>Ingredients:</h3>
+                            <div id="ingredientsDiv1">
+                            </div>
                         </div>
-                        <h3>Instructions:</h3>
-                        <p id="instructions"></p>
-                        <div id="youtube" data-youtubeId="" style="width:560px; height: 315px;">
+                        <div class="eight wide column">
+                            <br>
+                            <div id="ingredientsDiv2">
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">   
+                    <h3>Instructions:</h3>
+                    <p id="instructions"></p>
+                    <div class="fluid" id="youtube" data-youtubeId="" style="width:560px; height: 315px;">
                     </div>
                 </div>
             </div>
