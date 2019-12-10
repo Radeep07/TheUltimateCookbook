@@ -65,10 +65,21 @@ function getAllRecipesInCategory(response) {
 $(document).on("click", ".title", getRecipeByName);
 
 function getRecipeByName() {
+    //Adding string %20 whereever there are spaces in the meal name
+    var recipeName = "";
+    var splitNameList = searchTag.val().split(" ");
+    sessionStorage.setItem("searchedRecipeName", searchTag.val());
+    recipeName = splitNameList[0];
+    for(var i=1; i<splitNameList.length; i++) {
+        recipeName += "%20";
+        recipeName += splitNameList[i];
+    }
+    console.log(recipeByNameUrl + recipeName);
     $.ajax({
-        url: recipeByNameUrl + searchTag.val(),  //passing the meal name in the URL
+        url: recipeByNameUrl + recipeName,  //passing the meal name in the URL
         method: "GET"
     }).then(function(response) {
+        console.log(response);
         sessionStorage.setItem("recipe", JSON.stringify(response));
         sessionStorage.setItem("recipeId", null);
         document.location = "recipe.html";
@@ -78,7 +89,7 @@ function getRecipeByName() {
 function fillRecipeDetails() {
     //Reading the saved recipe from sessionStorage
     var recipe = JSON.parse(sessionStorage.getItem("recipe"));
-    if(recipe == null) {
+    if(recipe === null || recipe.meals === null) {
         var recipeId = JSON.parse(sessionStorage.getItem("recipeId"));
         //display recipe not found error message to user
         if(recipeId === null || recipeId === "" || recipeId === undefined) {
@@ -90,12 +101,25 @@ function fillRecipeDetails() {
                 url: recipeByIdUrl + recipeId,  //passing the category name in the URL
                 method: "GET"
             }).then(function(response) {
-                parseRecipeResponse(response);
+                parseRecipeResponse(response.meals[0]);
             });
         }
     }
     else {
-        parseRecipeResponse(recipe);      
+        //API returned the correct recipe matching the searched name
+        if(recipe.meals[0].strMeal === sessionStorage.getItem("searchedRecipeName")) {
+            parseRecipeResponse(recipe.meals[0]);    
+        }
+        else {
+            var searchedRecipeName = sessionStorage.getItem("searchedRecipeName");
+            //API couldn't match return the correct recipe by name and instead returned a list of matching items
+            for(var i=0; i<recipe.meals.length; i++) {
+                if(recipe.meals[i].strMeal === searchedRecipeName) {
+                    parseRecipeResponse(recipe.meals[i]);
+                    break;
+                }
+            }
+        }
     }
 }
 
@@ -103,9 +127,9 @@ function parseRecipeResponse(recipe) {
     console.log(recipe);
     $("#recipeDetails").attr("style", "display:block;")
     //Adding the recipe name
-    $("#name").text(recipe.meals[0].strMeal);
+    $("#name").text(recipe.strMeal);
     //Adding image for recipe
-    $("#recipeImg").attr("src", recipe.meals[0].strMealThumb);
+    $("#recipeImg").attr("src", recipe.strMealThumb);
 
     //Adding the recipe ingredients in ingredients div in an unordered list
     var ingredientStr = "strIngredient";
@@ -115,9 +139,9 @@ function parseRecipeResponse(recipe) {
     var measureKey = measureStr + ingredientCount; 
 
     //Increment the ingredientCount and access the ingredients until the ingridient name is empty
-    while(recipe.meals[0][ingredientKey] !== "" && recipe.meals[0][ingredientKey] !== null && recipe.meals[0][ingredientKey] !== undefined) {
+    while(recipe[ingredientKey] !== "" && recipe[ingredientKey] !== null && recipe[ingredientKey] !== undefined) {
         var newUlTag = $("<ul>");
-        var newLiTag = $("<li>").text(recipe.meals[0][ingredientKey] + " : " + recipe.meals[0][measureKey]);
+        var newLiTag = $("<li>").text(recipe[ingredientKey] + " : " + recipe[measureKey]);
         newUlTag.append(newLiTag);
         $("#ingredientsDiv").append(newUlTag);
         ingredientCount++;
@@ -126,7 +150,7 @@ function parseRecipeResponse(recipe) {
     }
 
     //Adding the recipe instructions in unordered list in instructions div
-    var instructions = recipe.meals[0].strInstructions;
+    var instructions = recipe.strInstructions;
     var instArr = instructions.split(".");
     for(var i=0; i<instArr.length-1; i++) {
         if(instArr[i].split(" ").length == 1) {
@@ -139,7 +163,7 @@ function parseRecipeResponse(recipe) {
     }
 
     //Parsing youtube ID from the parameter in youtube link
-    var youtubeLink = recipe.meals[0].strYoutube.split("?v=");
+    var youtubeLink = recipe.strYoutube.split("?v=");
     $("#youtube").attr("data-youtubeId", youtubeLink[1]);
     embedYoutubeVideo();
 
