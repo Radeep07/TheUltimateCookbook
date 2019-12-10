@@ -11,15 +11,19 @@
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body onload="fillRecipeDetails()">
-        <header>
-                <div class="ui search">
+        <div class="header">
+            <div class="ui grid">
+                <div class="seven wide column">
+                    <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
+                </div>
+                <div class="ui search seven wide column">
                     <div class="ui icon input">
                         <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
                         <i class="search icon"></i>
                     </div>
                     <div class="results"></div>
-                </div>
-        </header>
+                </div>          
+            </div>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -38,5 +42,6 @@
             </div>
         </div>
         <script src="assets/js/recipeScript.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

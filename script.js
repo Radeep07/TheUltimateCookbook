@@ -1,6 +1,11 @@
-//variable storing the URL to to fetch all recipes in a selected category
-var recipesInAreaCategoryUrl = "https://www.themealdb.com/api/json/v1/1/list.php?a=";
+//variable storing the URL to fetch all recipe categories
+var allCategoriesUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
+//variable storing the URL to fetch all recipe areas
 var recipesAreaWiseUrl="https://www.themealdb.com/api/json/v1/1/filter.php?a="
+//variable storing the URL to to fetch all recipes in a selected category
+var recipesInCategory = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
+//variable storing the URL to to fetch all recipes in a selected area
+var recipesInAreaCategoryUrl = "https://www.themealdb.com/api/json/v1/1/list.php?a=";
 
 //index to keep track of starting index when next/previous button is clicked
 var startingIndex = 0;
@@ -51,42 +56,6 @@ $(document).on("click", ".item", function(event){
         loadFilteredRecipes(response);
     });
 });   
-
-var searchTag = $("#search");
-//variable storing the URL to fetch all recipe categories
-var allCategoriesUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
-//variable storing the URL to to fetch all recipes in a selected category
-var recipesInCategory = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
-//variable storing the list of all meal names
-var content = [];
-//ajax call to fetch all categories by area
-$.ajax({
-    url: allCategoriesUrl,
-    method: "GET"
-}).then(function(response){
-    for(var i=0; i<response.categories.length; i++) {
-        //parsing each category name from the response object and initiating ajax call to fetch all recipes in that category
-        var categoryName = response.categories[i].strCategory;
-        $.ajax({
-            url: recipesInCategory + categoryName,  //passing the category name in the URL
-            method: "GET"
-        }).then(function(response) {
-            for(var j=0; j<response.meals.length; j++) {
-                //parsing each meal name from the response object and adding the meal name to the content list
-                var mealName = response.meals[j].strMeal;
-                var meal = {
-                    title : mealName
-                };
-                content.push(meal);
-            }
-            //Once all meal names have been searched, adding the jquery search function to search for the entered name in the content list
-            $('.ui.search')
-            .search({
-                source: content
-            });
-        });
-    }
-});
 
 $(".img").on("click", function(event){
 
@@ -149,7 +118,7 @@ function fillCategories(){
 
 $(".headLine").on("click", function(event){
     event.preventDefault();
-    fillCategories();
+    document.location = "index.html";
 });
 
 //Function to load the previous 16 recipes on index.html
