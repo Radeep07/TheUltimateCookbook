@@ -143,7 +143,12 @@ function parseRecipeResponse(recipe) {
         var newUlTag = $("<ul>");
         var newLiTag = $("<li>").text(recipe[ingredientKey] + " : " + recipe[measureKey]);
         newUlTag.append(newLiTag);
-        $("#ingredientsDiv").append(newUlTag);
+        if(ingredientCount < 11) {
+            $("#ingredientsDiv1").append(newUlTag);
+        }
+        else {
+            $("#ingredientsDiv2").append(newUlTag);
+        }
         ingredientCount++;
         ingredientKey = ingredientStr + ingredientCount;
         measureKey = measureStr + ingredientCount;
