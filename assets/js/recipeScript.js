@@ -178,7 +178,7 @@ function embedYoutubeVideo() {
     // Create an iFrame with autoplay set to true
     var iframe = $("<iframe>");
     iframe.attr("src", "https://www.youtube.com/embed/" + youtube.attr("data-youtubeId") + "?autoplay=1"); 
-    iframe.attr("style", "width:560px; height: 315px;");
+    iframe.attr("allowfullscreen", "true");
     youtube.append(iframe);
 }
 
