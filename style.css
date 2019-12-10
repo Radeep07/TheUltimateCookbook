@@ -91,3 +91,13 @@ figure {
     .ui.grid .row {
         padding-bottom: 0px;
     }
+
+    #foot{
+
+        background-color: bisque;
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+
+
+    }
