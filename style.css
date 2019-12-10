@@ -92,12 +92,9 @@ figure {
         padding-bottom: 0px;
     }
 
-    #foot{
-
+    footer{
         background-color: bisque;
-        font-size: 14px;
-        text-align: center;
+        font-size: 15px;
         font-weight: bold;
-
-
+        text-align: center;
     }
