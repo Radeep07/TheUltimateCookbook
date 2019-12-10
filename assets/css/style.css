@@ -12,6 +12,29 @@ ul {
 
 #recipeImg {
     border-radius: 10px;
-    width: 300px;
+    width: 380px;
      height:auto;
 }
+
+@media screen and (max-width: 767px){ 
+    iframe {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+#youtube {
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+  }
+   
+  #youtube iframe {
+     border: 0;
+     height: 100%;
+     left: 0;
+     position: absolute;
+     top: 0;
+     width: 100%;
+  }

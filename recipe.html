@@ -23,15 +23,18 @@
                     <div class="results"></div>
                 </div>          
             </div>
-        <div class="ui stackable grid container segment">
-            <div class="row">
-                <h2 id="name"></h2>
+        </div>
+        <div class="ui stackable grid center container segment" id="recipeDetails">
+            <div class="row" style="padding-top: 0px;">
+                <div class="center aligned column ui segment">
+                    <h2 id="name"></h2>
+                </div>
             </div>
             <div class="ui two column row">
-                <div class="five wide column centered">
+                <div class="six wide column centered">
                     <img class="ui centered image" id="recipeImg">
                 </div>
-                <div class="ten wide column centered" id="recipeDetails">
+                <div class="ten wide column centered">
                     <div class="ui grid">
                         <div class="eight wide column">
                             <h3>Ingredients:</h3>
@@ -50,7 +53,11 @@
                 <div class="column">   
                     <h3>Instructions:</h3>
                     <p id="instructions"></p>
-                    <div class="fluid" id="youtube" data-youtubeId="" style="width:560px; height: 315px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve wide tablet ten wide computer column">
+                    <div id="youtube" data-youtubeId="">
                     </div>
                 </div>
             </div>
