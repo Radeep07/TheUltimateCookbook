@@ -11,32 +11,37 @@
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body onload="fillRecipeDetails()">
-        <header>
-                <div class="ui search">
+        <div class="header">
+            <div class="ui grid">
+                <div class="seven wide column">
+                    <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
+                </div>
+                <div class="ui search seven wide column">
                     <div class="ui icon input">
                         <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
                         <i class="search icon"></i>
                     </div>
                     <div class="results"></div>
-                </div>
-        </header>
+                </div>          
+            </div>
         <div class="container">
             <div class="row">
                 <div class="col">
                     <h2 id="name"></h2>
-                    <img id="recipeImg" width="400px" height="auto">
+                    <img id="recipeImg">
                     <div id="recipeDetails">
                         <h3>Ingredients:</h3>
                         <div id="ingredientsDiv">
                         </div>
                         <h3>Instructions:</h3>
                         <p id="instructions"></p>
-                        <div id="" style="width:560px; height: 315px;">
+                        <div id="youtube" data-youtubeId="" style="width:560px; height: 315px;">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <script src="assets/js/recipeScript.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

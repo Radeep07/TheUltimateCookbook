@@ -37,4 +37,6 @@ ul {
     margin-bottom: 0.5rem;
 }
 
-
+#back, #next {
+    margin: 20px 0;
+}
