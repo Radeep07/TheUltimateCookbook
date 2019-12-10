@@ -1,4 +1,4 @@
-.ui
+#topBar
 {
     background-color: bisque;
 }
@@ -40,3 +40,21 @@ ul {
 #back, #next {
     margin: 20px 0;
 }
+
+
+
+figure {
+    overflow: hidden; 
+  }
+  
+ 
+  .img {
+    transition: transform .5s ease;
+  }
+  
+ 
+  .img:hover {
+    transform: scale(1.5);
+  }
+
+ 

@@ -164,3 +164,4 @@ function loadFilteredRecipes(response) {
         });
     }
 }
+
