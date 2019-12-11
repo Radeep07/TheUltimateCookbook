@@ -11,8 +11,8 @@ figure {
   } 
  
   .img {
-    transition: transform .5s ease;
-  } 
+    transition: transform .5s ease;    
+  }  
  
   .img:hover {
     transform: scale(1.5);
@@ -25,6 +25,7 @@ figure {
   .ui.stackable.grid{
       display: flex;
       width: 100%;
+      clear: both;
   }
   
   .prompt{
@@ -70,7 +71,6 @@ figure {
     @media screen and (max-width: 600px) {
       h1.headLine {
         font-size: 26px;
-        /* margin: 0 auto;  */ 
       }
     }
     .header{
@@ -92,10 +92,12 @@ figure {
     .ui.grid .row {
         padding-bottom: 0px;
     }
-
     footer{
         background-color: bisque;
         font-size: 15px;
         font-weight: bold;
         text-align: center;
+    }
+    #categoryName{      
+      text-align: center;
     }
