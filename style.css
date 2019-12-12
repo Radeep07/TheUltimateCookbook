@@ -102,4 +102,6 @@ figure {
     }
     #categoryName{      
       text-align: center;
+      padding-top: 30px;
+      text-decoration: underline;
     }

@@ -111,7 +111,8 @@ function fillCategories(){
             });
             $(".category").map(function() {
                 if($(this).attr("data-id") == i) {
-                    $(this).text(response.categories[i].strCategory);            
+                    $(this).text(response.categories[i].strCategory);  
+                
                 }
             });
         }
