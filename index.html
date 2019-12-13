@@ -1,201 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The Ultimate Cookbook </title>
-    <script data-require="jquery" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
-    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <!--link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" /-->
-    <link href="./assets/css/default.css" rel="stylesheet" type="text/css" media="all" />
-        
-</head>
-<body onload="fillCategories();">
-<div class="header">
-  <div class="ui center aligned stackable grid" id="topBar">
-    <!--div class="sixteen wide column"-->
-    <div class="row" id="headerRow">
-      <div class="eight wide middle aligned column">
-          <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
-      </div>
-      <!--div class= "ui nine"-->
-      <div class="four wide middle aligned column">
-          <div class="ui search">
-              <div class="ui icon input">
-                  <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
-                  <i class="search icon"></i>
-              </div>
-              <div class="results"></div>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>The Ultimate Cookbook </title>
+      <script data-require="jquery" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+      <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link href="./assets/css/default.css" rel="stylesheet" type="text/css" media="all" />
+          
+  </head>
+  <body onload="fillCategories();">
+    <div class="header">
+      <div class="ui center aligned stackable grid" id="topBar">
+        <!--div class="sixteen wide column"-->
+        <div class="row" id="headerRow">
+          <div class="eight wide middle aligned column" id="title">
+              <h1 class="headLine">THE ULTIMATE COOKBOOK</h1>
           </div>
-      </div>
-              
-        <div class="four wide middle aligned column">
-          <div class="ui simple floating dropdown labeled search icon button">
-              <i class="world icon"></i>
-              <span class="text">Select Cuisine</span>
-              <div class="menu" id="menuID">                
-              </div>       
-            </div>
-        </div> 
-    </div><!--end of row-->
-    
-        
-</div><!--end of ui grid-->
-</div><!--end of header-->
+          <!--div class= "ui nine"-->
+          <div class="four wide middle aligned column">
+              <div class="ui search">
+                  <div class="ui icon input">
+                      <input class="prompt" type="text" placeholder="Search recipes..." id="searchTxt">
+                      <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+              </div>
+          </div>
+                  
+            <div class="four wide middle aligned column">
+              <div class="ui simple floating dropdown labeled search icon button">
+                  <i class="world icon"></i>
+                  <span class="text">Select Cuisine</span>
+                  <div class="menu" id="menuID">                
+                  </div>       
+                </div>
+            </div> 
+        </div><!--end of row-->
+      </div><!--end of ui grid-->
+    </div><!--end of header-->
 
-<div class="ui stackable grid">
-  <div class="sixteen wide middle aligned column"><!--for displaying the category name-->
-    <h2 id="categoryName">Meal Categories</h2>
-  </div><!--end of diplay of category name-->
-  
-  <div class="ui stackable row">    
-    <div class="four wide column recipeDiv">   
-      <figure>
-        <div id="cat">
-            <img src="" alt="" class="ui fluid image rounded img" data-id="0" data-recipeId="" data-name="">
+    <div class="ui stackable grid">
+      <div class="sixteen wide middle aligned column ui segment"><!--for displaying the category name-->
+        <h2 id="categoryName">Meal Categories</h2>
+      </div><!--end of diplay of category name-->
+      
+      <div class="ui stackable row">    
+        <div class="four wide column recipeDiv">   
+          <figure>
+              <img src="" alt="" class="ui fluid image rounded img" data-id="0" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="0"></h3>
         </div>
-      </figure>
-      <h3 class="category" data-id="0"></h3>
-    </div>
 
-    <div class="four wide column">      
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="1" data-recipeId="" data-name="">
-      </figure>
-      <h3 class="category" data-id="1"></h3>  
-    </div>
+        <div class="four wide column">      
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="1" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="1"></h3>  
+        </div>
 
-    <div class="four wide column">    
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="2" data-recipeId="" data-name="">
-      </figure>
-      <h3 class="category" data-id="2"></h3>
-    </div>
+        <div class="four wide column">    
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="2" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="2"></h3>
+        </div>
 
-    <div class="four wide column">
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="3" data-recipeId="" data-name = "">
-      </figure>
-      <h3 class="category" data-id="3"></h3>
-    </div>
-  </div>
+        <div class="four wide column">
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="3" data-recipeId="" data-name = "">
+          </figure>
+          <h3 class="category" data-id="3"></h3>
+        </div>
+      </div>
 
-  <div class="ui stackable row">
-    <div class="four wide column">      
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="4" data-recipeId="" data-name="">
+      <div class="ui stackable row">
+        <div class="four wide column">      
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="4" data-recipeId="" data-name="">
+            
+          </figure>
+          <h3 class="category" data-id="4"></h3> 
+        </div>
         
-      </figure>
-      <h3 class="category" data-id="4"></h3> 
-    </div>
-    
-    <div class="four wide column">    
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="5" data-recipeId="" data-name="">
-      </figure>
-      <h3 class="category" data-id="5"></h3>
-    </div>
+        <div class="four wide column">    
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="5" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="5"></h3>
+        </div>
 
-    <div class="four wide column">
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="6" data-recipeId="" data-name="">
-      </figure>
-      <h3 class="category" data-id="6"></h3>
-    </div>
+        <div class="four wide column">
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="6" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="6"></h3>
+        </div>
 
-    <div class="four wide column">    
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="7" data-recipeId="" data-name="">
-      </figure>
-      <h3 class="category" data-id="7"></h3>
-    </div>
-  </div>
+        <div class="four wide column">    
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="7" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="7"></h3>
+        </div>
+      </div>
 
-  <div class="ui stackable row">
-    <div class="four wide column">        
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="8" data-recipeId="" data-name="">     
-      </figure>
-      <h3 class="category" data-id="8"></h3>
-    </div>
+      <div class="ui stackable row">
+        <div class="four wide column">        
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="8" data-recipeId="" data-name="">     
+          </figure>
+          <h3 class="category" data-id="8"></h3>
+        </div>
 
-    <div class="four wide column">      
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="9" data-recipeId="" data-name="">
-      </figure>
-      <h3 class="category" data-id="9"></h3>   
-    </div>
+        <div class="four wide column">      
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="9" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="9"></h3>   
+        </div>
 
-    <div class="four wide column">
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="10" data-recipeId="" data-name="">
-      </figure>
-      <h3 class="category" data-id="10"></h3>
-    </div>
+        <div class="four wide column">
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="10" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="10"></h3>
+        </div>
 
-    <div class="four wide column">     
-      <figure>
-        <img src="" alt="" class="ui fluid image rounded img" data-id="11" data-recipeId="" data-name="">
-      </figure>
-      <h3 class="category" data-id="11"></h3>  
-    </div>
-  </div>
+        <div class="four wide column">     
+          <figure>
+            <img src="" alt="" class="ui fluid image rounded img" data-id="11" data-recipeId="" data-name="">
+          </figure>
+          <h3 class="category" data-id="11"></h3>  
+        </div>
+      </div>
 
-  <div class="ui stackable row">
+      <div class="ui stackable row">
         <div class="four wide column">    
           <figure>
             <img src="" alt="" class="ui fluid image rounded img" data-id="12" data-recipeId="" data-name="">    
           </figure>
           <h3 class="category" data-id="12"></h3>
         </div>
-    
+
         <div class="four wide column">  
           <figure>
             <img src="" alt="" class="ui fluid image rounded img" data-id="13" data-recipeId="" data-name="">
           </figure>
           <h3 class="category" data-id="13"></h3>
         </div>
-    
+
         <div class="four wide column">
           <figure>
             <img src="" alt="" class="ui fluid image rounded img" data-id="14" data-recipeId="" data-name="">
           </figure>
           <h3 class="category" data-id="14"></h3>  
         </div>
-    
+
         <div class="four wide column">    
           <figure>
             <img src="" alt="" class="ui fluid image rounded img" data-id="15" data-recipeId="" data-name="">
           </figure>
           <h3 class="category" data-id="15"></h3>
         </div>
-    </div>
-  </div>
-</div>
-<div style="text-align:center;">
-    <div class="ui animated button" tabindex="0" id="back">
-      <div class="visible content">Previous</div>
-      <div class="hidden content">
-        <i class="left arrow icon"></i>
       </div>
     </div>
-    <div class="ui animated button" tabindex="0" id="next">
-      <div class="visible content">Next</div>
-      <div class="hidden content">
-        <i class="right arrow icon"></i>
+    <div style="text-align:center;">
+      <div class="ui animated button" tabindex="0" id="back">
+        <div class="visible content">Previous</div>
+        <div class="hidden content">
+          <i class="left arrow icon"></i>
+        </div>
+      </div>
+      <div class="ui animated button" tabindex="0" id="next">
+        <div class="visible content">Next</div>
+        <div class="hidden content">
+          <i class="right arrow icon"></i>
+        </div>
       </div>
     </div>
-  </div>
-  <footer>
-    <p> &copyCopyright 2019. <br>
-      All right reserved. Powered by "TheMealDB"
-    </p>
-
-  </footer>
-<script src="script.js"></script>
-<script src="assets/js/recipeScript.js"></script>
-</body>
+    <footer>
+      <p> &copyCopyright 2019. <br>
+        All right reserved. Powered by <span style="color:white">TheMealDB</span>
+      </p>
+    </footer>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/recipeScript.js"></script>
+  </body>
 </html>
