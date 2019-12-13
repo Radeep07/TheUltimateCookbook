@@ -5,6 +5,8 @@ var allCategoriesUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
 var recipesInCategoryUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
 //variable storing the URL to fetch a recipe by providing its name
 var recipeByNameUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+//variable storing URL to fetch a random recipe
+var randomRecipeURL =  "https://www.themealdb.com/api/json/v1/1/random.php";
 //variable storing the list of all meal names
 var content = [];
 
@@ -110,6 +112,11 @@ function fillRecipeDetails() {
         if(recipe.meals[0].strMeal === sessionStorage.getItem("searchedRecipeName")) {
             parseRecipeResponse(recipe.meals[0]);    
         }
+        //User has selected the random recipe button, display the random recipe returned
+        else if(sessionStorage.getItem("random") === "true") {
+            sessionStorage.setItem("random", "false");
+            parseRecipeResponse(recipe.meals[0]);
+        }
         else {
             var searchedRecipeName = sessionStorage.getItem("searchedRecipeName");
             //API couldn't match return the correct recipe by name and instead returned a list of matching items
@@ -182,3 +189,17 @@ function embedYoutubeVideo() {
     youtube.append(iframe);
 }
 
+$("#random").on("click", function(event) {
+    event.preventDefault();
+    //ajax call to fetch a random recipe
+    $.ajax({
+        url: randomRecipeURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+        sessionStorage.setItem("recipe", JSON.stringify(response));
+        sessionStorage.setItem("recipeId", null);
+        sessionStorage.setItem("random", "true");
+        document.location = "recipe.html";
+    });
+});
