@@ -1,76 +1,170 @@
 ul {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#back, #next {
+  margin: 20px 0;
+}
+
+figure {
+  overflow: hidden; 
+} 
+ 
+.img {
+  transition: transform .5s ease;    
+}  
+
+.img:hover {
+  transform: scale(1.5);
+}
+
+.header
+{
+  background-color: lightseagreen;
+}
+
+.ui.stackable.grid{
+  display: flex;
+  width: 100%;
+  clear: both;
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+}
+#headerRow{
+  padding-bottom:10px;
+}
+
+.prompt{
+  width:50%;
+}
+
+#menuID{
+  float: right;  
+  overflow-y: scroll;     
+} 
+.ui.simple.floating.dropdown.labeled.search.icon.button{
+  padding: .77857143em 1em;
+  background-color: white;
+  font-weight:bold;    
+  height: 37px;      
+}
+.item{
+    
+  font-weight: bold;
+  background-color: white;
+}
+
+ul {
+  margin-bottom: 0.5rem;
+}
+.headLine{
+  font-size:45px;
+  font-weight: 900; 
+  color: white; 
+}
+
+.headLine:hover {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+#title:active {
+  transform: translateY(2px);
+}
+
+#display-category{
+  clear: both;
+  background: lightgray;
+  
+}
+.text{
+  min-width: 130px;
+}
+
+.column {
+  padding: 0px;
+}
+
+.ui.grid {
+  margin: 0px;
+}
+
+footer{
+  background-color: lightseagreen;
+  font-size: 13px;
+  text-align: center;
+  color: lightgrey;
+  padding: 10px 0px;
+}
+
+#categoryName{      
+  text-align: center;
+  color: lightseagreen;
+}
+
+ul {
+  margin-bottom: 0.5rem;
 }
 
 #recipeDetails {
-    display: none;
+  display: none;
 }
 
 #searchTxt {
-    width: 100%;
+  width: 100%;
 }
 
 #recipeImg {
-    border-radius: 10px;
-    width: 380px;
-     height:auto;
+  border-radius: 10px;
+  width: 380px;
+  height:auto;
 }
 
 @media screen and (max-width: 767px){ 
-    iframe {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
+  iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 #youtube {
-    overflow: hidden;
-    padding-top: 56.25%;
-    position: relative;
-  }
-   
-  #youtube iframe {
-     border: 0;
-     height: 100%;
-     left: 0;
-     position: absolute;
-     top: 0;
-     width: 100%;
-  }
-  .header
-  {
-      background-color: bisque;
-  }
-  .headLine{
-    font-size:45px;
-    font-weight: 900;
-    margin-top: 15px;  
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
 }
-.ui.icon.input{
-    margin-top: 15px;
+    
+#youtube iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#name {
+  color: lightseagreen;
 }
 
 @media screen and (min-width: 601px) {
+  h1.headLine {
+    font-size: 24px;
+  }
+}
+  
+@media screen and (min-width: 1080px) {
     h1.headLine {
-      font-size: 24px;
+      font-size: 35px;
     }
   }
   
-  @media screen and (min-width: 1080px) {
-      h1.headLine {
-        font-size: 35px;
-      }
-    }
-    
-  @media screen and (max-width: 600px) {
-    h1.headLine {
-      font-size: 24px;
-    }
+@media screen and (max-width: 600px) {
+  h1.headLine {
+    font-size: 24px;
   }
- .ui.stackable.grid{
-    display: flex;
-    width: 100%;
-    clear: both;
-    margin-bottom: 1rem;
+
+  .ui.stackable.grid {
+    margin-top: 0rem!important;
+  }
 }

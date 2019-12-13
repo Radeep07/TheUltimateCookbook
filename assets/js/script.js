@@ -47,12 +47,12 @@ $(document).on("click", ".item", function(event){
     //On selecting new area, reseting the startingIndex back to 0
     startingIndex = 0;
     var areaTag=$(this).text();
-    $("#categoryName").text(areaTag+" Cuisines");
     $.ajax({
         url: recipesAreaWiseUrl+areaTag,  //passing the area name in the URL
         method: "GET"
     }).then(function(response) {
         console.log(response);
+        $("#categoryName").text(areaTag+" Recipes");
         sessionStorage.setItem("filteredRecipes", JSON.stringify(response));
         loadFilteredRecipes(response);
     });
@@ -64,12 +64,12 @@ $(".img").on("click", function(event){
     var categoryName = $(this).attr("data-name");
     //When category name is not empty then the page has loaded the categories; fire ajax call to get the recipes in the selected category
     if(categoryName !== "") {
-        $("#categoryName").text(categoryName+" Cuisines");
         $.ajax({
             url: recipesInCategory + categoryName,
             method: "GET"
         }).then(function(response){
             console.log(response);
+            $("#categoryName").text(categoryName+ " Recipes");
             sessionStorage.setItem("filteredRecipes", JSON.stringify(response));
             loadFilteredRecipes(response);
         });
