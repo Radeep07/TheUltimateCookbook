@@ -36,5 +36,5 @@ As a developers We do understand the importance of time that we put in for our d
 * As a user, I want to get a random recipe suggestion when I cannot decide my mind!
 
 ### Deployed application URL -
-https://radeep07.github.io/ProjectTeam/
+https://radeep07.github.io/TheUltimateCookbook/
 
